@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/* navbar styling */
+.Header-navbar {
+    height: 56px;
+    position: fixed !important;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #ff000c;
+    justify-content: space-between;
+}
+
+.Header-navbar .logo a {
+    color: white;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.Header-navbar .logo a span {
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.Header-navbar.sticky .logo a span {
+    color: white;
+}
+
+.btn-logo {
+    display: flex;
+    align-items: center;
+}
+
+/* menu btn styling */
+.menu-btn {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    padding-left: 0.5rem;
+}
+
+.user-btn {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+}
+
+.max-width {
+    max-width: 1300px;
+    padding: 0 0 0 40px;
+}
+
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+    background-color: #222;
+    color: white !important;
+}
+
+.custom-search-ant-input {
+    width: 30%;
+}
+
+@media (max-width: 700px) {
+    .max-width {
+        display: none;
+    }
+
+    .custom-search-ant-input {
+        width: 50%;
+    }
+}
