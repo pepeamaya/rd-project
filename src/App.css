@@ -1,12 +1,15 @@
-.App-header {
-  background-color: #222;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.home {
+  display: flex;
+  min-height: 100vh;
+  background-color: #222;
+  color: white;
 }
