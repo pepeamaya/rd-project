@@ -8,8 +8,12 @@
 }
 
 .home {
+  /* 
   display: flex;
-  min-height: 100vh;
-  background-color: #222;
   color: white;
+  */
+  min-height: 100vh;
+  background-color: #111;
+  display: grid;
+  padding-top: 60px;
 }

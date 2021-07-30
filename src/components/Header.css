@@ -8,8 +8,9 @@
     align-items: center;
     font-family: 'Ubuntu', sans-serif;
     transition: all 0.3s ease;
-    background-color: #ff000c;
+    background-color: #1db954;
     justify-content: space-between;
+    z-index: 1;
 }
 
 .Header-navbar .logo {
@@ -74,7 +75,7 @@
 }
 
 .nav-menu {
-    background-color: #111;
+    background-color: #222;
     width: 200px;
     height: 100vh;
     display: flex;
@@ -83,6 +84,7 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index: 999;
 }
 
 .nav-menu.active {

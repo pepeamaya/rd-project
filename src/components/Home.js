@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Cards from './Cards';
 
 const Home = () => {
     return (
         <div className="home">
-            <h1 style={ {paddingTop: '200px'} } >home</h1>
+            <Cards />
         </div>
     )
 }
