@@ -20,7 +20,7 @@
 }
 
 .Header-navbar .logo span {
-    color: black;
+    color: #000;
     transition: all 0.3s ease;
 }
 
@@ -31,7 +31,7 @@
 
 /* menu btn styling */
 .menu-btn {
-    color: white;
+    color: #000;
     font-size: 20px;
     cursor: pointer;
     display: flex;
@@ -39,14 +39,22 @@
 }
 
 .menu-btn:hover {
-    color: black;
+    color: #fff;
 }
 
 .user-btn {
-    color: white;
+    color: #000;
     font-size: 30px;
     cursor: pointer;
     display: flex;
+}
+
+.link-btn {
+    color: #000;
+}
+
+.user-btn:hover {
+    color: #fff;
 }
 
 .max-width {

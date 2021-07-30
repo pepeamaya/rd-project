@@ -6,6 +6,8 @@ import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { SideBarData } from './SidebarData';
 
+const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=4a59a2fe9e2a47deb6c6b0ecadc3a769&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state&state=34fFs29kd09";
+
 export const Header = () => {
     const { Search } = Input;
     const onSearch = value => console.log(value);
@@ -31,7 +33,7 @@ export const Header = () => {
                         onSearch={onSearch}
                     />
                 </div>
-                <UserOutlined className="user-btn" />
+                <a className="link-btn" href={AUTH_URL}><UserOutlined className="user-btn" /></a>
             </div>
             <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
                 <ul className="nav-menu-items" onClick={showSideBar}>
