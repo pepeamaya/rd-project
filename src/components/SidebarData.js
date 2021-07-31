@@ -1,20 +1,20 @@
 import React from 'react';
 import { 
+    PlaySquareOutlined,
     HomeOutlined,
 } from '@ant-design/icons';
-
 
 export const SideBarData = [
     {
         title: "Home",
-        path: "/home",
+        path: "/",
         icon: <HomeOutlined />,
         cName: "nav-text"
     },
     {
-        title: "Home",
-        path: "/home",
-        icon: <HomeOutlined />,
+        title: "Dashboard",
+        path: "/dashboard",
+        icon: <PlaySquareOutlined />,
         cName: "nav-text"
-    }
+    },
 ]

@@ -8,10 +8,15 @@
 }
 
 .home {
-  /* 
+  min-height: 100vh;
+  background-color: #111;
+  padding-top: 60px;
   display: flex;
-  color: white;
-  */
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard {
   min-height: 100vh;
   background-color: #111;
   display: grid;

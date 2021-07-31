@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
 import './Header.css';
 import { MenuOutlined, UserOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
-import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { SideBarData } from './SidebarData';
 
-const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=4a59a2fe9e2a47deb6c6b0ecadc3a769&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state&state=34fFs29kd09";
+const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=4a59a2fe9e2a47deb6c6b0ecadc3a769&response_type=code&redirect_uri=http://localhost:3000/dashboard&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
 
 export const Header = () => {
-    const { Search } = Input;
-    const onSearch = value => console.log(value);
     const [sidebar, setSidebar] = useState(false);
 
     const showSideBar = () => setSidebar(!sidebar);
@@ -26,13 +22,7 @@ export const Header = () => {
                         <div className="logo">Dev<span>Pp</span></div>
                     </div>
                 </div>
-                <div className="custom-search-ant-input">
-                    <Search
-                        placeholder="Search"
-                        allowClear
-                        onSearch={onSearch}
-                    />
-                </div>
+
                 <a className="link-btn" href={AUTH_URL}><UserOutlined className="user-btn" /></a>
             </div>
             <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -61,4 +51,4 @@ export const Header = () => {
     )
 }
 
-export default Header
+export default Header;

@@ -1,12 +1,11 @@
-import React from 'react';
-import Cards from './Cards';
+import React from 'react'
 
-const Home = () => {
+function Home() {
     return (
         <div className="home">
-            <Cards />
+            <h1 style={{ color: '#fff' }} >Find your albums!</h1>
         </div>
     )
 }
 
-export default Home
+export default Home;
