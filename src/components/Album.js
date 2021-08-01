@@ -1,7 +1,7 @@
 import React from 'react'
-import './Cards.css'
+import './Album.css'
 
-function Cards({ listAlbums }) {
+function Album({ listAlbums }) {
     return (
         <div className="wrapper-grid">
             {listAlbums.map((item, index) => {
@@ -18,4 +18,4 @@ function Cards({ listAlbums }) {
     )
 }
 
-export default Cards;
+export default Album;

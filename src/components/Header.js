@@ -19,7 +19,7 @@ export const Header = () => {
                         <MenuOutlined onClick={showSideBar}/>
                     </Link>
                     <div className="max-width">
-                        <div className="logo">Your <span>Library</span></div>
+                        <div className="logo">My <span>albums</span></div>
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Cards from './Cards';
+import Album from './Album';
 import useAuth from './useAuth';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
@@ -25,9 +25,10 @@ const Dashboard = () => {
     useEffect(() => {
         if (!accessToken) { return setSearchResults([]) };
         if (!search) {
-            const getchMySavedAlbums = async() => {
-                const rest = await spotifyApi.getMySavedAlbums();
-                const data = rest.body.items.map(item => {
+            const promiseMySavedAlbums = async() => {
+                // Retrieve the albums that are saved to the authenticated users
+                const restSavedAlbums = await spotifyApi.getMySavedAlbums();
+                const data = restSavedAlbums.body.items.map(item => {
                     const image = item.album.images.reduce(
                         (biggest, image) => {
                             if (image.height > biggest.height) {
@@ -50,12 +51,41 @@ const Dashboard = () => {
                 setSearchResults(data);
             };
 
-            getchMySavedAlbums()
+            promiseMySavedAlbums()
             .catch((e) => {
                 console.log('There has been a problem with getMySavedAlbums(): ' + e.message);
             });
         } else {
-            
+            const promiseSearchAlbums = async () => {
+                // Search for an album
+                const restSearchAlbum = await spotifyApi.searchAlbums(search);
+                const data = restSearchAlbum.body.albums.items.map(item => {
+                    const image = item.images.reduce(
+                        (biggest, image) => {
+                            if (image.height > biggest.height) {
+                                return image;
+                            } else {
+                                return biggest;
+                            }
+                        }, item.images[0]
+                    );
+    
+                    return {
+                        title: item.name,
+                        artist: item.artists[0].name,
+                        uri: item.uri,
+                        albumUrl: image.url,
+                        totalTracks: item.total_tracks,
+                    }
+                });
+    
+                setSearchResults(data);
+            };
+    
+            promiseSearchAlbums()
+                .catch((e) => {
+                    console.log('There has been a problem with searchAlbums(): ' + e.message);
+                });
         }
 
     }, [search, accessToken]);
@@ -68,11 +98,10 @@ const Dashboard = () => {
                     <div className="custom-search-ant-input">
                         <Search
                             placeholder="Search"
-                            allowClear
                             onSearch={setSearch}
                         />
                     </div>
-                    <Cards listAlbums={searchResults} />
+                    <Album listAlbums={searchResults} />
                 </>
                 :
                 <h1 className="error-message">How are you today?</h1>

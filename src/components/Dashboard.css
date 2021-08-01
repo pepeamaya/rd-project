@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     height: fit-content;
+    z-index: 0;
 }
 
 .ant-input-group-wrapper {
