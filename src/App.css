@@ -9,11 +9,28 @@
 
 .home {
   min-height: 100vh;
-  background-color: #111;
   padding-top: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url('./home2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: antiquewhite;
+  font-weight: bold;
+}
+
+.home .max-width-home {
+  margin: auto 0 auto 40px;
+}
+
+.home .home-content .text-1 {
+  font-size: 4rem;
+}
+
+.home .home-content .text-2 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-left: -3px;
 }
 
 .dashboard {
@@ -23,9 +40,16 @@
   padding-top: 60px;
 }
 
-.error-message {
+.show-message {
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* responsive media query start */
+@media (max-width: 1300px) {
+  .home .max-width-home {
+      margin-left: 0px;
+  }
 }
