@@ -9,12 +9,12 @@ export const SideBarData = [
         title: "Home",
         path: "/",
         icon: <HomeOutlined />,
-        cName: "nav-text"
+        cName: "nav-text",
     },
     {
         title: "Dashboard",
         path: "/dashboard",
         icon: <PlaySquareOutlined />,
-        cName: "nav-text"
+        cName: "nav-text",
     },
 ]

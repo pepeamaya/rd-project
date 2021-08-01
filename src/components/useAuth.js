@@ -15,7 +15,7 @@ const useAuth = (code) => {
             setAccessToken(res.data.accessToken);
             setRefreshToken(res.data.refreshToken);
             setExpiresIn(res.data.expiresIn); // 3600sec or 1h by default
-            window.history.pushState({}, null, '/');
+            window.history.pushState({}, null, '/dashboard/');
         })
         .catch(() => {
             window.location = '/';

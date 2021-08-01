@@ -75,7 +75,7 @@
 }
 
 .menu-bars:hover {
-    color: white;
+    color: #1db954;
 }
 
 .nav-menu {
@@ -120,7 +120,7 @@
 
 .nav-text a:hover {
     background-color: #444;
-    color: #fff;
+    color: #1db954;
 }
 
 .nav-menu-items {
@@ -139,6 +139,10 @@
 
 .title-span {
     margin-left: 16px;
+}
+
+.title-span:hover {
+    color: #1db954;
 }
 
 @media (max-width: 700px) {

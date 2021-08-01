@@ -1,5 +1,5 @@
 .wrapper-grid {
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center;
     margin: 0 2rem;
@@ -12,30 +12,32 @@
     border-radius: 1rem;
     position: relative;
     margin: 0.5rem;
-    height: fit-content;
-    width: max-content;
+    height: auto;
+    width: 18rem;
+    min-width: 18rem;
 }
 
 .profile-img {
     width: 8rem;
     margin-top: 1.5rem;
+    margin-bottom: inherit;
     cursor: pointer;
 }
 
 .name {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #fff;
 }
 
 .artist {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #fff;
 }
 
 .description {
     margin: 1rem 2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #fff;
 }
