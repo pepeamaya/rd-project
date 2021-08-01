@@ -1,5 +1,5 @@
 .wrapper-grid {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, 20rem);
     justify-content: center;
     margin: 0 2rem;

@@ -22,3 +22,10 @@
   display: grid;
   padding-top: 60px;
 }
+
+.error-message {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

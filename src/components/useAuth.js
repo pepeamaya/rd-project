@@ -14,12 +14,11 @@ const useAuth = (code) => {
         .then(res => {
             setAccessToken(res.data.accessToken);
             setRefreshToken(res.data.refreshToken);
-            setExpiresIn(res.data.expiresIn);
-            // window.history.pushState({}, null, '/');
-            console.log(res.data);
+            setExpiresIn(res.data.expiresIn); // 3600sec or 1h by default
+            window.history.pushState({}, null, '/');
         })
         .catch(() => {
-            // window.location = '/';
+            window.location = '/';
         })
 
     }, [code]);

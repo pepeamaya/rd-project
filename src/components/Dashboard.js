@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import Cards from './Cards';
 import useAuth from './useAuth';
 import { Input } from 'antd';
@@ -21,7 +20,23 @@ const Dashboard = () => {
                     onSearch={onSearch}
                 />
             </div>
-            {accessToken && <Cards />}
+            <Cards />
+            {/* {accessToken && <Cards />} */}
+            {/* {accessToken
+                ?
+                <>
+                    <div className="custom-search-ant-input">
+                        <Search
+                            placeholder="Search"
+                            allowClear
+                            onSearch={onSearch}
+                        />
+                    </div>
+                    <Cards />
+                </>
+                :
+                <h1 className="error-message">Sorry! You don't have albums</h1>
+            } */}
         </div>
     )
 }
