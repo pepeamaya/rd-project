@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { screen } from '@testing-library/dom';
-import { Header } from "../components/Header";
-import { BrowserRouter as Router } from 'react-router-dom';
+import Header from "../components/header/Header";
+import { BrowserRouter as Router } from "react-router-dom";
 
 test("render title in Header", () => {
     render(

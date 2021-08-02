@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Album from './Album';
-import useAuth from './useAuth';
+import Album from './album/Album';
+import useAuth from '../useAuth';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
 import './Dashboard.css';
