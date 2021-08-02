@@ -15,6 +15,11 @@
     height: auto;
     width: 18rem;
     min-width: 18rem;
+    color: #555;
+}
+
+.container:hover {
+    background-color: #555;
 }
 
 .profile-img {
