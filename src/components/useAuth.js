@@ -19,7 +19,7 @@ const useAuth = (code) => {
             window.history.pushState({}, null, '/dashboard/');
         })
         .catch((e) => {
-            onsole.log(`There has been a problem with: ${e}`);
+            console.log(`There has been a problem with: ${e}`);
             window.location = '/';
         })
 

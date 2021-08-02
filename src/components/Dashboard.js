@@ -104,7 +104,7 @@ const Dashboard = () => {
                     <Album listAlbums={searchResults} />
                 </>
                 :
-                <h1 className="show-message">How are you today?</h1>
+                <h1 className="show-message">No albums yet...</h1>
             }
         </div>
     )
