@@ -5,10 +5,11 @@ const useAuth = (code) => {
     const [accessToken, setAccessToken] = useState();
     const [refreshToken, setRefreshToken] = useState();
     const [expiresIn, setExpiresIn] = useState();
+    const serverURL = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         if (!code) return;
-        axios.post('http://localhost:3001/login', {
+        axios.post(`${serverURL}/login`, {
             code,
         })
         .then(res => {
@@ -17,7 +18,8 @@ const useAuth = (code) => {
             setExpiresIn(res.data.expiresIn); // 3600sec or 1h by default
             window.history.pushState({}, null, '/dashboard/');
         })
-        .catch(() => {
+        .catch((e) => {
+            onsole.log(`There has been a problem with: ${e}`);
             window.location = '/';
         })
 

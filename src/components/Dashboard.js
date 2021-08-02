@@ -8,7 +8,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 
 const code = new URLSearchParams(window.location.search).get('code');
 const spotifyApi = new SpotifyWebApi({
-    clientId: '4a59a2fe9e2a47deb6c6b0ecadc3a769',
+    clientId: `${process.env.REACT_APP_CLIENT_ID}`,
 });
 
 const Dashboard = () => {
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
             promiseMySavedAlbums()
             .catch((e) => {
-                console.log('There has been a problem with getMySavedAlbums(): ' + e.message);
+                console.log(`There has been a problem with getMySavedAlbums(): ${e.message}`);
             });
         } else {
             const promiseSearchAlbums = async () => {
@@ -84,7 +84,7 @@ const Dashboard = () => {
     
             promiseSearchAlbums()
                 .catch((e) => {
-                    console.log('There has been a problem with searchAlbums(): ' + e.message);
+                    console.log(`There has been a problem with searchAlbums(): ${e.message}`);
                 });
         }
 
