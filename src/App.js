@@ -1,8 +1,8 @@
 import './App.css';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Dashboard from './components/Dashboard';
+import Home from './components/home/Home';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   return (
