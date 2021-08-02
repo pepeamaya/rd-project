@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import {screen} from '@testing-library/dom';
-import Home from "../components/Home";
+import { screen } from '@testing-library/dom';
+import Home from "../components/home/Home";
 
 test("render div with texts in Home", () => {
     render(<Home />);
