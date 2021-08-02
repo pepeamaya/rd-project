@@ -5,10 +5,10 @@ const useAuth = (code) => {
     const [accessToken, setAccessToken] = useState();
     const [refreshToken, setRefreshToken] = useState();
     const [expiresIn, setExpiresIn] = useState();
-    const serverURL = process.env.REACT_APP_API_URL;
-
+    
     useEffect(() => {
         if (!code) return;
+        const serverURL = process.env.REACT_APP_API_URL;
         axios.post(`${serverURL}/login`, {
             code,
         })
