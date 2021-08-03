@@ -1,0 +1,11 @@
+#link-btn {
+    color: #fff;
+    border-color: #fff;
+    background-color: #222;
+}
+
+#link-btn:hover {
+    color: #222;
+    border-color: #222;
+    background-color: #fff;
+}
