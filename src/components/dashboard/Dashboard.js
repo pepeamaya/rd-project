@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Album from './album/Album';
-import useAuth from '../useAuth';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
 import './Dashboard.css';
 import SpotifyWebApi from 'spotify-web-api-node';
+import { TokenContext } from '../../contexts/TokenContext';
 
-const code = new URLSearchParams(window.location.search).get('code');
 const spotifyApi = new SpotifyWebApi({
     clientId: `${process.env.REACT_APP_CLIENT_ID}`,
 });
@@ -15,15 +14,16 @@ const Dashboard = () => {
     const { Search } = Input;
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([])
-    const accessToken = useAuth(code);
+    const accessToken = useContext(TokenContext);
+    const localToken = accessToken || localStorage.getItem('accessToken');
 
     useEffect(() => {
-        if (!accessToken) return;
-        spotifyApi.setAccessToken(accessToken);
-    }, [accessToken]);
+        if (!localToken) return;
+        spotifyApi.setAccessToken(localToken);
+    }, [localToken]);
 
     useEffect(() => {
-        if (!accessToken) { return setSearchResults([]) };
+        if (!localToken) { return setSearchResults([]) };
         if (!search) {
             const promiseMySavedAlbums = async() => {
                 // Retrieve the albums that are saved to the authenticated users
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
             promiseMySavedAlbums()
             .catch((e) => {
-                console.log(`There has been a problem with getMySavedAlbums(): ${e.message}`);
+                console.error(`There has been a problem with getMySavedAlbums(): ${e.message}`);
             });
         } else {
             const promiseSearchAlbums = async () => {
@@ -84,11 +84,11 @@ const Dashboard = () => {
     
             promiseSearchAlbums()
                 .catch((e) => {
-                    console.log(`There has been a problem with searchAlbums(): ${e.message}`);
+                    console.error(`There has been a problem with searchAlbums(): ${e.message}`);
                 });
         }
 
-    }, [search, accessToken]);
+    }, [search, localToken]);
 
     return (
         <div className="dashboard">

@@ -49,10 +49,6 @@
     display: flex;
 }
 
-.link-btn {
-    color: #000;
-}
-
 .user-btn:hover {
     color: #fff;
 }

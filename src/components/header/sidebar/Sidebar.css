@@ -35,11 +35,7 @@
     margin-left: 2rem;
     font-size: 1.5rem;
     background: none;
-    color: white;
-}
-
-.menu-bars:hover {
-    color: #1db954;
+    color: #fff !important;
 }
 
 .nav-text {
@@ -65,7 +61,7 @@
 
 .nav-text a:hover {
     background-color: #444;
-    color: #1db954;
+    color: #1ed760;
 }
 
 .title-span {
@@ -73,5 +69,5 @@
 }
 
 .title-span:hover {
-    color: #1db954;
+    color: #1ed760;
 }
