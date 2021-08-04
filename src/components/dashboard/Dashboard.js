@@ -15,15 +15,15 @@ const Dashboard = () => {
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([])
     const accessToken = useContext(TokenContext);
+    const localToken = accessToken || localStorage.getItem('accessToken');
 
     useEffect(() => {
-        console.log('Dash:>', accessToken);
-        if (!accessToken) return;
-        spotifyApi.setAccessToken(accessToken);
-    }, [accessToken]);
+        if (!localToken) return;
+        spotifyApi.setAccessToken(localToken);
+    }, [localToken]);
 
     useEffect(() => {
-        if (!accessToken) { return setSearchResults([]) };
+        if (!localToken) { return setSearchResults([]) };
         if (!search) {
             const promiseMySavedAlbums = async() => {
                 // Retrieve the albums that are saved to the authenticated users
@@ -88,7 +88,7 @@ const Dashboard = () => {
                 });
         }
 
-    }, [search, accessToken]);
+    }, [search, localToken]);
 
     return (
         <div className="dashboard">
