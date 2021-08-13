@@ -16,6 +16,7 @@ const useAuth = (code) => {
         })
         .catch((error) => {
             console.error(error);
+            alert(error);
             setAccess(false);
         })
 
