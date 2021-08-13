@@ -46,12 +46,6 @@ const Dashboard = () => {
             <div className="dashboard"><h1 className="show-message">Something went wrong</h1></div>
         );
     }
-
-    if (searchResults.length === 0) {
-        return (
-            <div className="dashboard"><h1 className="show-message">Oooops, something went wrong while loading your albums</h1></div>
-        );
-    }
     
     // default behavior
     return (
@@ -62,7 +56,7 @@ const Dashboard = () => {
                     onSearch={setSearch}
                 />
             </div>
-            <Album listAlbums={searchResults} />
+            {searchResults.length === 0 ? <h1 className="show-message">Oooops, something went wrong while loading your albums</h1> : <Album listAlbums={searchResults} />}
         </div>
     );
 
