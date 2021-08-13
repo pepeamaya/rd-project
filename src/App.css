@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #111;
-  color: antiquewhite;
+  color: #fff;
   font-weight: bold;
 }
 
@@ -34,7 +34,7 @@
   margin-left: -3px;
 }
 
-.dashboard {
+.dashboard, .error {
   min-height: 100vh;
   background-color: #111;
   display: grid;

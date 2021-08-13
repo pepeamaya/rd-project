@@ -16,5 +16,5 @@ export const SideBarData = [
         path: "/dashboard",
         icon: <PlaySquareOutlined />,
         cName: "nav-text",
-    },
+    }
 ]

@@ -1,113 +1,71 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Album from './album/Album';
 import { Input } from 'antd';
 import 'antd/dist/antd.css';
 import './Dashboard.css';
-import SpotifyWebApi from 'spotify-web-api-node';
-import { TokenContext } from '../../contexts/TokenContext';
-
-const spotifyApi = new SpotifyWebApi({
-    clientId: `${process.env.REACT_APP_CLIENT_ID}`,
-});
+import { AccessContext } from '../../contexts/AccessContext';
+import axios from 'axios';
+const serverURL = process.env.REACT_APP_API_URL;
 
 const Dashboard = () => {
     const { Search } = Input;
     const [search, setSearch] = useState("");
-    const [searchResults, setSearchResults] = useState([])
-    const accessToken = useContext(TokenContext);
-    const localToken = accessToken || localStorage.getItem('accessToken');
+    const [searchResults, setSearchResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const access = useContext(AccessContext);
 
     useEffect(() => {
-        if (!localToken) return;
-        spotifyApi.setAccessToken(localToken);
-    }, [localToken]);
+        if (!access) return;
+        setLoading(true);
+        axios.get(`${serverURL}/albums?search=${encodeURIComponent(search)}`)
+        .then((res) => {
+            setSearchResults(res.data);
+            setLoading(false);
+        }).catch((error) => {
+            console.error(error);
+            setLoading(false);
+            setError(error);
+        });
+    }, [search, access]);
 
-    useEffect(() => {
-        if (!localToken) { return setSearchResults([]) };
-        if (!search) {
-            const promiseMySavedAlbums = async() => {
-                // Retrieve the albums that are saved to the authenticated users
-                const restSavedAlbums = await spotifyApi.getMySavedAlbums();
-                const data = restSavedAlbums.body.items.map(item => {
-                    const image = item.album.images.reduce(
-                        (biggest, image) => {
-                            if (image.height > biggest.height) {
-                                return image;
-                            } else {
-                                return biggest;
-                            }
-                        }, item.album.images[0]
-                    );
+    if (!access) {
+        return (
+            <div className="dashboard"><h1 className="show-message">Please, log in</h1></div>
+        );
+    }
 
-                    return {
-                        title: item.album.name,
-                        artist: item.album.artists[0].name,
-                        uri: item.album.uri,
-                        albumUrl: image.url,
-                        totalTracks: item.album.total_tracks,
-                    }
-                });
+    if (loading) {
+        return (
+            <div className="dashboard"><h1 className="show-message">Loading...</h1></div>
+        );
+    }
 
-                setSearchResults(data);
-            };
+    if (error) {
+        return (
+            <div className="dashboard"><h1 className="show-message">Something went wrong</h1></div>
+        );
+    }
 
-            promiseMySavedAlbums()
-            .catch((e) => {
-                console.error(`There has been a problem with getMySavedAlbums(): ${e.message}`);
-            });
-        } else {
-            const promiseSearchAlbums = async () => {
-                // Search for an album
-                const restSearchAlbum = await spotifyApi.searchAlbums(search);
-                const data = restSearchAlbum.body.albums.items.map(item => {
-                    const image = item.images.reduce(
-                        (biggest, image) => {
-                            if (image.height > biggest.height) {
-                                return image;
-                            } else {
-                                return biggest;
-                            }
-                        }, item.images[0]
-                    );
+    if (searchResults.length === 0) {
+        return (
+            <div className="dashboard"><h1 className="show-message">Oooops, something went wrong while loading your albums</h1></div>
+        );
+    }
     
-                    return {
-                        title: item.name,
-                        artist: item.artists[0].name,
-                        uri: item.uri,
-                        albumUrl: image.url,
-                        totalTracks: item.total_tracks,
-                    }
-                });
-    
-                setSearchResults(data);
-            };
-    
-            promiseSearchAlbums()
-                .catch((e) => {
-                    console.error(`There has been a problem with searchAlbums(): ${e.message}`);
-                });
-        }
-
-    }, [search, localToken]);
-
+    // default behavior
     return (
         <div className="dashboard">
-            {searchResults.length > 0
-                ?
-                <>
-                    <div className="custom-search-ant-input">
-                        <Search
-                            placeholder="Search"
-                            onSearch={setSearch}
-                        />
-                    </div>
-                    <Album listAlbums={searchResults} />
-                </>
-                :
-                <h1 className="show-message">No albums yet...</h1>
-            }
+            <div className="custom-search-ant-input">
+                <Search 
+                    placeholder="Search"
+                    onSearch={setSearch}
+                />
+            </div>
+            <Album listAlbums={searchResults} />
         </div>
-    )
+    );
+
 }
 
 export default Dashboard;
