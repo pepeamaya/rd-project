@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const useAuth = (code) => {
-    const [accessToken, setAccessToken] = useState();
-    const [refreshToken, setRefreshToken] = useState();
-    const [expiresIn, setExpiresIn] = useState();
+    const [access, setAccess] = useState(false);
     
     useEffect(() => {
         if (!code) return;
@@ -12,20 +10,19 @@ const useAuth = (code) => {
         axios.post(`${serverURL}/login`, {
             code,
         })
-        .then(res => {
-            setAccessToken(res.data.accessToken);
-            setRefreshToken(res.data.refreshToken);
-            setExpiresIn(res.data.expiresIn); // 3600sec or 1h by default
-            window.history.pushState({}, null, '/dashboard/');
+        .then((res) => {
+            setAccess(true);
+            window.history.pushState({}, null, '/dashboard');
         })
-        .catch((e) => {
-            console.error(`There has been a problem with: ${e}`);
-            window.location = '/';
+        .catch((error) => {
+            console.error(error);
+            alert(error);
+            setAccess(false);
         })
 
     }, [code]);
 
-    return accessToken;
+    return access;
 };
 
 export default useAuth;

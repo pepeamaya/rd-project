@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import Dashboard from './components/dashboard/Dashboard';
 import React from 'react';
-import { TokenProvider } from './contexts/TokenContext';
+import { AccessProvider } from './contexts/AccessContext';
 
 function App() {
   return (
-    <TokenProvider>
+    <AccessProvider>
       <Router>
         <Header />
         <Switch>
@@ -16,7 +16,7 @@ function App() {
           <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
-    </TokenProvider>
+    </AccessProvider>
   );
 }
 
